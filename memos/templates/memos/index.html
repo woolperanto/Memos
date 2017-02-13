@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Memos Karten{% endblock %}
+{% block heading %}
+  <h2>Memos Karten {{tag}}</h2>
+{% endblock %}
+{
+{% if latest_karten_list %}
+{% block content %}
+
+{% for karte in karten %}
+
+   <details>
+  <summary class="well well-sm">{{ karte.karte_frontside_text }}</summary>
+
+
+        <p> {{ karte.karte_backside_text }}</p><p>{{ karte.date_created|date:"Y-m-d" }}</p>
+
+        {% if karte.author == user %}
+            <br><a class="btn btn-default btn-xs" role="button"
+            href="{% url "karte_edit" karte.pk %}">Karte editieren</a>
+             <a class="btn btn-default btn-xs" role="button"
+              href="{% url "karte_del" karte.pk %}"> Karte löschen</a>
+        {% elif karte.author != user %}
+            <br><a class="btn btn-default btn-xs" role="button"
+              href="{% url "karte_add" karte.pk %}">zu meinen Karten hinzufügen</a>
+        {% endif %}
+
+            </details>
+
+{% comment %}
+    <button type="button" class="btn btn-lg btn-default" value="{{ karte.pk }}" data-containerd_frontside_text }}</button>
+{% endcomment %}
+
+{% endfor %}
+
+{% endblock %}
+{% else %}
+<p>Keine Karteikarten vorhanden du Pflaume!</p>
+{% endif %}

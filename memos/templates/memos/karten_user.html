@@ -1,0 +1,9 @@
+{% extends "memos/index.html" %}
+
+{% block title %}{{ author.username }}'s Karten{% endblock %}
+
+{% block heading %}
+  <h2>{{ author.username }}'s Karten {{tag}}<br>
+    <small>{{ karten.count }} Karten gesamt</small>
+  </h2>
+{% endblock %}

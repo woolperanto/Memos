@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}{{ author.username }}'s Training{% endblock %}
+{% block heading %}
+  <h2>{{ author.username }}'s Training</h2>
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="alert alert-info alert-dismissable fade in" data-toggle="collapse" data-target="#demo" >
+       <h2 style="float: center">{{karte.karte_frontside_text}}</h2>
+<div id="demo" class="collapse">
+    <h3>{{karte.karte_backside_text}}</h3>
+
+   <button type="button" onclick="location.href='{% url "next_karte_plus" karte.pk %}'" class="btn btn-success"  data-dismiss="alert" name="ok" value="true"> <span class="glyphicon glyphicon-ok"></span></button>
+      <button type="button" onclick="location.href=' {% url "next_karte_minus" karte.pk %}'" class="btn btn-danger"  data-dismiss="alert" style="float: right"> <span class="glyphicon glyphicon-remove"></span></button>
+
+  </div>
+      </div>
+
+
+
+
+
+
+
+{% endblock%}
